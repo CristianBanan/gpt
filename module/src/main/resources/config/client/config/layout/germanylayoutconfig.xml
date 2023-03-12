@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rows PUBLIC "" "http://www.extenda.com/dtd/receiptlayout.dtd" [
+		<!ENTITY NotVoidedAndPrinting SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/notvoidedandprinting.xml">
+		<!ENTITY VoidedCase SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/voidedcase.xml">
+		<!ENTITY VoidedHeader SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/voidedheader.xml">
+		<!ENTITY VoidedFooter SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/voidedfooter.xml">
+		<!ENTITY RefundedHeader SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/refundedheader.xml">
+		<!ENTITY VoidedOrRefundedHeader "&VoidedHeader; &RefundedHeader;">
+		<!ENTITY PriceOverride SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/priceoverride.xml">
+		<!ENTITY ApiLayoutText SYSTEM "file:./subsystems/posfacadecore/config/client/config/layout/entities/apilayouttext.xml">
+		<!ENTITY EpsTransactionReceiptLines SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/epstransactionreceiptlines.xml">
+		<!ENTITY NewUnitPriceReasonCode SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/newunitpricereasoncode.xml">
+		<!ENTITY Discounts SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/discounts.xml">
+		<!ENTITY RefundedDiscounts SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/discountsrefunded.xml">
+		<!ENTITY Bonus SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/bonus.xml">
+		<!ENTITY PriceModifier SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/pricemodifier.xml">
+		<!ENTITY RefundLoyalties SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/refundloyalties.xml">
+		<!ENTITY TransactionLink SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/transactionlink.xml">
+		<!ENTITY ReceiptLineComment SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/receiptlinecomment.xml">
+		<!ENTITY CustomerOrderRowInfo SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/customerorderrowinfo.xml">
+		<!ENTITY ShouldUseMerchantRows SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/shouldusemerchantrows.xml">
+		<!ENTITY PriceList SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/pricelist.xml">
+		<!ENTITY RefundedPriceList SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/pricelistrefunded.xml">
+		<!ENTITY EmptyLine SYSTEM "file:./subsystems/stdconfig/config/client/config/layout/entities/emptyline.xml">
+		]>
+
+<rows>
+
+	<receipt-layout name="Receipt" modifier="extend">
+
+		<tab id="tab55" position="55" />
+
+		<!--
+
+          The layout is inspired from this receipt
+          http://www.expatfocus.com/Forums/viewtopic/t=25486/
+
+          __________________________________________
+
+          Red Apple       25%
+                     B 1,701kg PT 0,200kg
+                    Netto 1,501kg*1,00€..       1,50
+          Red Apple       25%  manuell
+                     B 0,250kg PT 0,200kg
+                    Netto 0,050kg*1,00€..       0,05
+          Magazine        6%                    5,00
+          Ticket          0%                    5,00
+          Denim Jacket G..25%                  45,00
+          __________________________________________
+
+          2006020000004  = 6%
+          123456789036  = 25%
+          3002000260009   = SaleWeightItem
+          4060800101556  = Pepsi light rp (with deposit)
+          100        = Pant
+          2006019000008   = No VAT (or 0 in this case)
+          2006000000000  = Red Apple
+          5741000006115  = Sprite (with deposit)
+
+         -->
+		<row-layout refs="SaleUnitItem" state="PRE" input="shouldBeInput" modifier="replace">
+
+			<switch>
+				<case>
+					<boolean member="deposit" />
+				</case>
+				<!-- don't render items in deposititempakage -->
+				<default>
+					<switch>
+						<case>
+							&NotVoidedAndPrinting;
+							&VoidedOrRefundedHeader;
+							<!-- price override -->
+							&PriceOverride;
+							<!-- Ends here -->
+							<switch>
+								<case>
+									<or>
+										<greater member="quantity" value="1" />
+										<equals member="alwaysDisplayQuantity" value="true" />
+									</or>
+									<switch>
+										<case>
+											<present member="refunded" />
+											<line>
+												<cell from="tab0" to="tab40" min="10" format="normal">
+													<text member="name" />
+												</cell>
+												<cell from="tab40" to="tab50" min="10" format="normal">
+													<number member="vatPercent" decimals="0" />
+													<static-text value="%" />
+												</cell>
+												<cell from="tab50" to="tab75" min="10" format="normal"
+													  align="RIGHT">
+													<unit member="quantity" />
+													<static-text value="*" />
+													<amount member="price" />
+												</cell>
+												<cell from="tab75" to="tab100" min="10" format="amount">
+													<amount member="priceExtended" negate="true" />
+												</cell>
+											</line>
+										</case>
+										<case>
+											<present member="packageQuantity" />
+											<line>
+												<cell from="tab0" to="tab15" min="10" format="normal">
+													<static-text value="*(" />
+													<unit member="packageQuantity" />
+													<resource key="receiptlayout.statictext.uom.ea" />
+													<static-text value=") " />
+												</cell>
+												<cell from="tab15" to="tab40" min="10" format="normal">
+													<text member="name" />
+												</cell>
+												<cell from="tab40" to="tab50" min="10" format="normal">
+													<number member="vatPercent" decimals="0" />
+													<static-text value="%" />
+												</cell>
+												<cell from="tab50" to="tab75" min="10" format="normal"
+													  align="RIGHT">
+													<unit member="quantity" />
+													<!-- unit of measure required for scale certification -->
+													<resource key="receiptlayout.statictext.uom.ea" />
+													<static-text value="*" />
+													<amount member="price" />
+												</cell>
+												<cell from="tab75" to="tab100" min="10" format="amount">
+													<amount member="priceExtended" />
+												</cell>
+											</line>
+										</case>
+										<default>
+											<line>
+												<cell from="tab0" to="tab40" min="10" format="normal">
+													<text member="name" />
+												</cell>
+												<cell from="tab40" to="tab50" min="10" format="normal">
+													<number member="vatPercent" decimals="0" />
+													<static-text value="%" />
+												</cell>
+												<cell from="tab50" to="tab75" min="10" format="normal"
+													  align="RIGHT">
+													<unit member="quantity" />
+													<!-- unit of measure required for scale certification -->
+													<resource key="receiptlayout.statictext.uom.ea" />
+													<static-text value="*" />
+													<amount member="price" />
+												</cell>
+												<cell from="tab75" to="tab100" min="10" format="amount">
+													<amount member="priceExtended" />
+												</cell>
+											</line>
+										</default>
+									</switch>
+								</case>
+								<default>
+									<switch>
+										<case>
+											<present member="refunded" />
+											<line>
+												<cell from="tab0" to="tab40" min="10" format="normal">
+													<text member="name" />
+												</cell>
+												<cell from="tab40" to="tab50" min="10" format="normal">
+													<number member="vatPercent" decimals="0" />
+													<static-text value="%" />
+												</cell>
+												<cell from="tab75" to="tab100" min="10" format="amount">
+													<amount member="priceExtended" negate="true" />
+												</cell>
+											</line>
+										</case>
+										<case>
+											<present member="packageQuantity" />
+											<line>
+												<cell from="tab0" to="tab10" min="10" format="normal">
+													<static-text value="*" />
+												</cell>
+												<cell from="tab10" to="tab75" min="10" format="normal">
+													<text member="name" />
+												</cell>
+												<cell from="tab75" to="tab100" min="10" format="amount">
+													<amount member="priceExtended" />
+												</cell>
+											</line>
+										</case>
+										<default>
+											<!-- Standard item -->
+											<line>
+												<cell from="tab0" to="tab40" min="10" format="normal">
+													<text member="name" />
+												</cell>
+												<cell from="tab40" to="tab50" min="10" format="normal">
+													<number member="vatPercent" decimals="0" />
+													<static-text value="%" />
+												</cell>
+												<cell from="tab75" to="tab100" min="10" format="amount">
+													<amount member="priceExtended" />
+												</cell>
+											</line>
+										</default>
+									</switch>
+								</default>
+							</switch>
+							&ApiLayoutText;
+							&EpsTransactionReceiptLines;
+							&NewUnitPriceReasonCode;
+
+							<for-each member="discountText">
+								<switch>
+									<case>
+										<and>
+											<not>
+												<present member="refunded" />
+											</not>
+											<or>
+												<less member="discountVisible" value="0" />
+												<boolean member="displayZero" />
+											</or>
+										</and>
+										&Discounts;
+									</case>
+									<case>
+										<present member="refunded" />
+										&RefundedDiscounts;
+									</case>
+									<default />
+								</switch>
+							</for-each>
+
+							&Bonus;
+
+							&PriceModifier;
+
+							<for-each member="saleDepositAmount">
+								<switch>
+									<case>
+										<present member="refunded" />
+										<switch>
+											<case>
+												<greater member="quantity" value="1" />
+												<line>
+													<cell from="tab5" to="tab40" min="10" format="normal">
+														<static-text value="+ " />
+														<text member="saleDepositDescription" />
+													</cell>
+													<cell from="tab40" to="tab50" min="10" format="normal">
+														<number member="vatPercent" decimals="0" />
+														<static-text value="%" />
+													</cell>
+													<cell from="tab50" to="tab75" min="10" format="normal">
+														<unit member="quantity" />
+														<static-text value="*" />
+														<amount member="saleDepositPrice" />
+													</cell>
+													<cell from="tab75" to="tab100" min="10" format="amount">
+														<amount member="saleDepositAmount" negate="true" />
+													</cell>
+												</line>
+											</case>
+											<default>
+												<line>
+													<cell from="tab5" to="tab40" min="10" format="normal">
+														<static-text value="+ " />
+														<text member="saleDepositDescription" />
+													</cell>
+													<cell from="tab40" to="tab50" min="10" format="normal">
+														<number member="vatPercent" decimals="0" />
+														<static-text value="%" />
+													</cell>
+													<cell from="tab75" to="tab100" min="10" format="amount">
+														<amount member="saleDepositAmount" negate="true" />
+													</cell>
+												</line>
+											</default>
+										</switch>
+									</case>
+									<default>
+										<switch>
+											<case>
+												<greater member="quantity" value="1" />
+												<line>
+													<cell from="tab5" to="tab40" min="10" format="normal">
+														<static-text value="+ " />
+														<text member="saleDepositDescription" />
+													</cell>
+													<cell from="tab40" to="tab50" min="10" format="normal">
+														<number member="vatPercent" decimals="0" />
+														<static-text value="%" />
+													</cell>
+													<cell from="tab50" to="tab75" min="10" format="normal">
+														<unit member="quantity" />
+														<static-text value="*" />
+														<amount member="saleDepositPrice" />
+													</cell>
+													<cell from="tab75" to="tab100" min="10" format="amount">
+														<amount member="saleDepositAmount" />
+													</cell>
+												</line>
+											</case>
+											<default>
+												<line>
+													<cell from="tab5" to="tab40" min="10" format="normal">
+														<static-text value="+ " />
+														<text member="saleDepositDescription" />
+													</cell>
+													<cell from="tab40" to="tab50" min="10" format="normal">
+														<number member="vatPercent" decimals="0" />
+														<static-text value="%" />
+													</cell>
+													<cell from="tab75" to="tab100" min="10" format="amount">
+														<amount member="saleDepositAmount" />
+													</cell>
+												</line>
+											</default>
+										</switch>
+									</default>
+								</switch>
+							</for-each>
+
+							<for-each member="refundDate">
+								<switch>
+									<case>
+										<greater member="quantity" value="1" />
+										<line>
+											<cell from="tab5" to="tab100" min="10" format="italic">
+												<text member="refundHistoryFunctionType" />
+												<static-text value=" " />
+												<unit member="refundedUnit" />
+												<static-text value=" " />
+												<date member="refundDate" />
+											</cell>
+										</line>
+									</case>
+									<default>
+										<line>
+											<cell from="tab5" to="tab100" min="10" format="italic">
+												<text member="refundHistoryFunctionType" />
+												<static-text value=" " />
+												<date member="refundDate" />
+											</cell>
+										</line>
+									</default>
+								</switch>
+							</for-each>
+
+							&RefundLoyalties;
+							&TransactionLink;
+							&ReceiptLineComment;
+							&VoidedFooter;
+						</case>
+						<default />
+					</switch>
+					&CustomerOrderRowInfo;
+				</default>
+			</switch>
+		</row-layout>
+
+		<row-layout refs="SaleWeightItem" state="PRE" input="shouldBeInput" modifier="replace">
+
+			<switch>
+				<case>
+					&NotVoidedAndPrinting;
+					&VoidedOrRefundedHeader;
+					<!-- price override -->
+					&PriceOverride;
+					<!-- Ends here -->
+					<switch>
+						<case>
+							<present member="packageQuantity" />
+							<switch>
+								<case>
+									<equals member="weightEntryMethod" value="MANUAL" />
+									<line>
+										<cell from="tab0" to="tab50" min="10" format="normal">
+											<static-text value="* " />
+											<text member="name" />
+										</cell>
+										<cell from="tab50" to="tab75" min="10" format="normal">
+											<text member="weightEntryMethodString" />
+										</cell>
+									</line>
+								</case>
+								<default>
+									<line>
+										<cell from="tab0" to="tab50" min="10" format="normal">
+											<static-text value="* " />
+											<text member="name" />
+										</cell>
+									</line>
+								</default>
+							</switch>
+						</case>
+						<default>
+							<switch>
+								<case>
+									<equals member="weightEntryMethod" value="MANUAL" />
+									<line>
+										<cell from="tab0" to="tab40" min="10" format="normal">
+											<text member="name" />
+										</cell>
+										<cell from="tab40" to="tab50" min="10" format="normal">
+											<number member="vatPercent" decimals="0" />
+											<static-text value="%" />
+										</cell>
+										<cell from="tab50" to="tab75" min="10" format="normal">
+											<text member="weightEntryMethodString" />
+										</cell>
+									</line>
+								</case>
+								<default>
+									<line>
+										<cell from="tab0" to="tab40" min="10" format="normal">
+											<text member="name" />
+										</cell>
+										<cell from="tab40" to="tab50" min="10" format="normal">
+											<number member="vatPercent" decimals="0" />
+											<static-text value="%" />
+										</cell>
+									</line>
+								</default>
+							</switch>
+						</default>
+					</switch>
+					<switch>
+						<case>
+							<present member="tare" />
+							<line>
+								<cell from="tab25" to="tab75" min="10" format="normal"
+									  align="RIGHT">
+									<resource key="receiptlayout.statictext.gross.abbr" />
+									<static-text value=" " />
+									<weight member="grossWeight" />
+									<text member="unitOfMeasure" />
+									<!-- Tare information required for scale certification -->
+									<static-text value=" " />
+									<resource key="receiptlayout.statictext.tare.abbr" />
+									<static-text value=" " />
+									<weight member="tare" />
+									<text member="unitOfMeasure" />
+								</cell>
+							</line>
+							<line>
+								<cell from="tab25" to="tab75" min="10" format="normal"
+									  align="RIGHT">
+									<!-- Weight and price must include unit of measure for scale certification -->
+									<resource key="receiptlayout.statictext.net" />
+									<static-text value=" " />
+									<weight member="weight" />
+									<text member="unitOfMeasure" />
+									<static-text value="*" />
+									<amount member="price" />
+									<text member="currencySymbol" />
+									<static-text value="/" />
+									<text member="unitOfMeasure" />
+								</cell>
+								<cell from="tab75" to="tab100" min="10" format="amount">
+									<amount member="priceExtended" />
+								</cell>
+							</line>
+						</case>
+						<case>
+							<present member="refunded" />
+							<line>
+								<cell from="tab25" to="tab75" min="10" format="normal"
+									  align="RIGHT">
+									<weight member="weight" />
+									<text member="unitOfMeasure" />
+									<static-text value="*" />
+									<amount member="price" />
+									<text member="currencySymbol" />
+									<static-text value="/" />
+									<text member="unitOfMeasure" />
+								</cell>
+								<cell from="tab75" to="tab100" min="10" format="amount">
+									<amount member="priceExtended" negate="true" />
+								</cell>
+							</line>
+						</case>
+						<default>
+							<line>
+								<cell from="tab25" to="tab75" min="10" format="normal"
+									  align="RIGHT">
+									<weight member="weight" />
+									<text member="unitOfMeasure" />
+									<static-text value="*" />
+									<amount member="price" />
+									<text member="currencySymbol" />
+									<static-text value="/" />
+									<text member="unitOfMeasure" />
+								</cell>
+								<cell from="tab75" to="tab100" min="10" format="amount">
+									<amount member="priceExtended" />
+								</cell>
+							</line>
+						</default>
+					</switch>
+
+					&NewUnitPriceReasonCode;
+
+					<for-each member="discountText">
+						<switch>
+							<case>
+								<and>
+									<not>
+										<present member="refunded" />
+									</not>
+									<or>
+										<less member="discountVisible" value="0" />
+										<boolean member="displayZero" />
+									</or>
+								</and>
+								&Discounts;
+							</case>
+							<case>
+								<present member="refunded" />
+								&RefundedDiscounts;
+							</case>
+							<default />
+						</switch>
+					</for-each>
+
+					&Bonus;
+
+					&PriceModifier;
+
+					<for-each member="saleDepositAmount">
+						<line>
+							<cell from="tab5" to="tab40" min="10" format="normal">
+								<static-text value="+ " />
+								<resource key="receiptlayout.statictext.deposit" />
+							</cell>
+							<cell from="tab40" to="tab50" min="10" format="normal">
+								<number member="vatPercent" decimals="0" />
+								<static-text value="%" />
+							</cell>
+							<cell from="tab75" to="tab100" min="10" format="amount">
+								<amount member="saleDepositAmount" />
+							</cell>
+						</line>
+					</for-each>
+					&RefundLoyalties;
+					&TransactionLink;
+					&ReceiptLineComment;
+					&VoidedFooter;
+				</case>
+				<default />
+			</switch>
+			&CustomerOrderRowInfo;
+			<for-each member="refundDate">
+				<line>
+					<cell from="tab5" to="tab100" min="10" format="italic">
+						<text member="refundHistoryFunctionType" />
+						<static-text value=" " />
+						<date member="refundDate" />
+					</cell>
+				</line>
+			</for-each>
+		</row-layout>
+
+		<row-layout refs="Decorator" state="BOTH" input="false" modifier="replace">
+			<switch>
+				<case>
+					<equals member="id" value="EmptyLine" />
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="medium" align="CENTER">
+							<static-text value=" " />
+						</cell>
+					</line>
+				</case>
+
+				<case>
+					<equals member="id" value="Duplicate" />
+					<switch>
+						<case>
+							<equals member="copyNumber" value="0" />
+							<line>
+								<cell from="tab0" to="tab100" min="10" format="medium"
+									  truncate="CUT" align="CENTER">
+									<resource key="receiptlayout.statictext.duplicate" />
+								</cell>
+							</line>
+						</case>
+						<default>
+							<line>
+								<cell from="tab0" to="tab100" min="10" format="medium"
+									  truncate="CUT" align="CENTER">
+									<static-text value="** " />
+									<resource key="receiptlayout.statictext.duplicate.counted" />
+									<static-text value=" " />
+									<resource key="receiptlayout.statictext.duplicate.number" />
+									<text member="copyNumber" />
+									<static-text value=" **" />
+								</cell>
+							</line>
+						</default>
+					</switch>
+				</case>
+
+				<case>
+					<or>
+						<equals member="id" value="RefundHeader" />
+						<equals member="id" value="RefundFooter" />
+					</or>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="medium" align="CENTER">
+							<resource key="receiptlayout.statictext.store.copy.refund" />
+						</cell>
+					</line>
+				</case>
+
+				<case>
+					<equals member="id" value="SignatureReceipt" />
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="medium" align="CENTER">
+							<resource key="receiptlayout.statictext.signature.receipt" />
+						</cell>
+					</line>
+				</case>
+
+				<case>
+					<equals member="id" value="SignatureCopyReceipt" />
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="medium" align="CENTER">
+							<resource key="receiptlayout.statictext.signature.copy.receipt" />
+						</cell>
+					</line>
+				</case>
+
+				<case>
+					<equals member="id" value="SignatureHeader" />
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal" truncate="CUT">
+							<fill pattern="-" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal" align="CENTER">
+							<resource key="receiptlayout.statictext.customer.details" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab25" min="10" format="normal"
+							  truncate="CUT">
+							<static-text value=" " />
+						</cell>
+					</line>
+				</case>
+
+				<case>
+					<equals member="id" value="Signature" />
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal"
+							  truncate="CUT">
+							<resource key="receiptlayout.statictext.name" />
+							<static-text value=" " />
+							<fill pattern="_" />
+						</cell>
+					</line>
+					&EmptyLine;
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal"
+							  truncate="CUT">
+							<resource key="receiptlayout.statictext.phone" />
+							<static-text value=" " />
+							<fill pattern="_" />
+						</cell>
+					</line>
+					&EmptyLine;
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.phone.agreement1" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.phone.agreement2" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.phone.agreement3" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.phone.agreement4" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.phone.agreement5" />
+						</cell>
+					</line>
+					&EmptyLine;
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.personal.agreement1" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.personal.agreement2" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.personal.agreement3" />
+						</cell>
+					</line>
+					&EmptyLine;
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.signature" />
+						</cell>
+					</line>
+					&EmptyLine;
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal"
+							  truncate="CUT">
+							<fill pattern="_" />
+						</cell>
+					</line>
+					&EmptyLine;
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.privacypolicy.title" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.privacypolicy.body1" />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal">
+							<resource key="receiptlayout.statictext.privacypolicy.body2" />
+						</cell>
+					</line>
+					&EmptyLine;
+				</case>
+
+				<case>
+					<equals member="id" value="CancelOrder" />
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="medium" align="CENTER">
+							<resource key="receiptlayout.statictext.cancel.order" />
+						</cell>
+					</line>
+				</case>
+
+				<case>
+					<equals member="id" value="PostVoidOrder" />
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="medium" align="CENTER">
+							<resource key="receiptlayout.statictext.postvoid.order" />
+						</cell>
+					</line>
+				</case>
+
+				<default>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal" color="0xff0000"
+							  truncate="CUT">
+							<static-text value="UNKNOWN DECORATOR: " />
+						</cell>
+					</line>
+					<line>
+						<cell from="tab0" to="tab100" min="10" format="normal"
+							  truncate="CUT">
+							<text member="id" />
+						</cell>
+					</line>
+				</default>
+			</switch>
+		</row-layout>
+
+
+	</receipt-layout>
+</rows>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE config PUBLIC "" "http://www.extenda.com/dtd/config.dtd">
+
+<config version="${project.version}">
+
+	<group name="Tenders">
+		<value name="LocalCurrencyID" type="String" modifier="replace">EUR</value>
+	</group>
+
+	<group name="Business">
+		<group name="ClockComponent">
+			<value name="DateFormat" type="String" modifier="replace">dd.MM.yyyy</value>
+		</group>
+		<group name="Workstation">
+			<value name="DateFormat" type="String" modifier="replace">ddMMyyyy</value>
+			<value name="DateInputFormat" type="String" modifier="replace">ddMMyyyy</value>
+			<group name="LanguageSupport">
+				<value name="UseDefault" type="Boolean" modifier="replace">false</value>
+				<value name="Country" type="String" modifier="replace">DE</value>
+				<value name="Language" type="String" modifier="replace">de</value>
+				<value name="CountryModuleBundles" type="StringMap" modifier="replace">
+					<![CDATA[
+                      <map>
+                        <entry key="1">module:germany:config/client/config/language/cmstrings</entry>
+                      </map>
+                    ]]>
+				</value>
+			</group>
+		</group>
+
+		<!-- Inputmappings for weigt/price codes -->
+		<group name="Item">
+			<group name="Barcodes">
+				<value name="inputmappings" type="InputMappings" modifier="extend">
+					<![CDATA[
+          <input>
+
+            <mapping name="WEIGHT_OR_PRICE_BARCODE"
+              expression="(^02[0-9]{11}$)|(^2[8,9][0-9]{11}$)|(^2[0-9]{11}$)"
+              handler="RandomWeightBarcodeHandler"
+              validator="Ean13Validator"
+              command="GenericItemCommand"
+              input="MANUAL, SCANNER, SELF_SCANNER"/>
+
+          </input>
+          ]]>
+				</value>
+			</group>
+		</group>
+	    <!-- GS1 barcode configuration -->
+		<group name="Item">
+			<group name="Barcodes">
+				<group name="EANInStore">
+					<group name="RandomWeightBarcode">
+						<value name="BarcodeList" type="RandomWeightBarcodeList"
+							   modifier="replace">
+							<![CDATA[
+                <list>
+                  <barcode prefix="02"
+                      type="PRICE"
+                    fieldStartPosition="9"
+                    fieldEndPosition="12"
+                    numberOfDecimals="2"/>
+
+                  <barcode prefix="22"
+                      type="PRICE"
+                    fieldStartPosition="8"
+                    fieldEndPosition="12"
+                    numberOfDecimals="2"/>
+
+                  <barcode prefix="23"
+                      type="PRICE"
+                    fieldStartPosition="8"
+                    fieldEndPosition="12"
+                    numberOfDecimals="2"/>
+
+                  <barcode prefix="24"
+                      type="PRICE"
+                    fieldStartPosition="8"
+                    fieldEndPosition="12"
+                    numberOfDecimals="2"/>
+
+                  <barcode prefix="28"
+                      type="WEIGHT"
+                    fieldStartPosition="8"
+                    fieldEndPosition="12"
+                    numberOfDecimals="3"/>
+
+                  <barcode prefix="29"
+                      type="WEIGHT"
+                    fieldStartPosition="8"
+                    fieldEndPosition="12"
+                    numberOfDecimals="3"/>
+                </list>
+              ]]>
+						</value>
+					</group>
+				</group>
+			</group>
+		</group>
+
+		<group name="Receipt">
+			<group name="AmountFormat">
+				<value name="UseSeparator" type="Boolean" modifier="replace">true</value>
+			</group>
+		</group>
+
+		<group name="Refund">
+			<value name="ForcePromptForTransactionLink" type="Boolean" modifier="replace">true</value>
+		</group>
+	</group>
+</config>

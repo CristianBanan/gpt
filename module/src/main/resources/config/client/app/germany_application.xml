@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE application PUBLIC "" "http://www.extenda.com/dtd/application.dtd">
+
+<application version="${project.version}">
+  <modules/>
+
+  <boot>
+
+    <replace-template name="SaleReturnLineItemAccessorFactory" component="CMSaleReturnLineItemAccessorFactory">
+      <instance-ref name="TaxService" instance="posappl.TaxService"/>
+      <instance-ref name="ModeHook" instance="ModeHook"/>
+      <instance-ref name="SubsetItemSelection" instance="SubsetItemSelection" />
+      <instance-ref name="CommonCountrySettings" instance="CommonCountrySettings"/>
+    </replace-template>
+
+    <replace-template name="ExtendedReceiptCommand" component="ExtendedReceiptCommand">
+      <instance-ref name="PeripheralStatusModel" instance="PeripheralStatusModel" />
+      <instance-ref name="AccessLoggingUtilities" instance="AccessLoggingUtilities" />
+      <instance-ref name="ElementFactory" instance="ElementFactory" />
+      <component-map name="ExtendedReceiptHandlers">
+        <component-ref name="ExtendedReceiptCustomerNameHandler" template="ExtendedReceiptCustomerNameHandler" />
+        <component-ref name="ExtendedReceiptAddress1Handler" template="ExtendedReceiptAddress1Handler" />
+        <component-ref name="ExtendedReceiptAddress2Handler" template="ExtendedReceiptAddress2Handler" />
+        <component-ref name="ExtendedReceiptPostalCodeHandler" template="ExtendedReceiptPostalCodeHandler" />
+        <component-ref name="ExtendedReceiptCityHandler" template="ExtendedReceiptCityHandler" />
+        <component-ref name="ExtendedReceiptCountryHandler" template="ExtendedReceiptCountryHandler" />
+      </component-map>
+    </replace-template>
+    
+     <instance name="FiscalActiveTransactionListener" component="FiscalActiveTransactionListener">
+          <instance-ref name="TransactionManager" instance="TransactionManager"/>
+       </instance>
+
+  </boot>
+</application>

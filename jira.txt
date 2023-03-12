@@ -1,0 +1,10 @@
+Steps to Reproduce:
+1. Make a refund
+2. Check the printed receipt
+Expected result: The receipt should be printed without any additional, unexpected text on them. Store copy should be printed in German with the right font and center aligned.
+Actual result: UNKNOWN DECORATOR is printed additionally on the store copy. Store copy is printed in English with a strange font and alignment.
+
+Description:
+UNKNOWN DECORATOR is printed on the store copy for Refunds and Mix of Sale and Refund. This text is not expected.
+Store copy should be printed in German with the right font and center alignment, however currently it is in English with strange font and alignment. Most probably the Unknown Decorator issue is related to the the fact that the Store Copy is not printed in the right language, font and alignment.  
+The issue is encountered for online/offline refund/complaint and mix of sale and refund/complaint.

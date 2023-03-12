@@ -1,0 +1,106 @@
+                                         
+          Welcome to Shop n Shop          
+    Berlin - Address, PostCode Berlin     
+       ORG. NR: OrganizationNumber        
+         Tel. Nr. TelephoneNumber         
+Verkäufer: 1            Kasse: 01  Nr. 158
+Datum: 07.03.23                Zeit: 11:11
+------------------------------------------
+UNKNOWN DECORATOR:                        
+StoreCopy                                 
+Rückgabe             
+()                                        
+Plastic bag     19%                  -1,50
+  Laden:  Nr.   Datum:     Zeit: Kasse:   
+  001     158   07.03.23   00:00 01       
+------------------------------------------
+Gesamt        13,40 €
+                                          
+MwSt.%      MwSt.    Netto     Gesamt     
+19,00       2,14     11,26     13,40      
+Gesamt      2,14     11,26     13,40      
+
+Eingegan..Euro Cash                  13,40
+------------------------------------------
+            Kundeninformation             
+
+Name: ____________________________________
+
+Telefon*: ________________________________
+
+* Wenn Sie damit einverstanden sind,      
+können Sie Ihre Telefonnummer angeben,    
+so dass wir diese stichprobenweise        
+für Qualitätssicherungs- und              
+Revisionszwecke verwenden können.         
+
+Ich bin einverstanden, dass meine         
+persönlichen Angaben gespeichert          
+werden.                                   
+
+Unterschrift:                             
+
+__________________________________________
+
+Datenschutzhinweis:                       
+Alle Ihre Daten werden nach zwei Jahren   
+vernichtet.                               
+
+                Come Again                
+           Mon - Fri 8:00-22:00           
+             Sat 10:00-21:00              
+             Sun 11:00-22:00              
+                                          barcode44001010004620307233
+44001010004620307233
+--0<-- CUT PAPER --0<--
+
+
+Ignored
+                                          
+
+          Welcome to Shop n Shop          
+    Berlin - Address, PostCode Berlin     
+       ORG. NR: OrganizationNumber        
+         Tel. Nr. TelephoneNumber         
+Verkäufer: 1            Kasse: 01  Nr. 158
+Datum: 07.03.23                Zeit: 11:11
+------------------------------------------
+Nachos original 19%                  14,90
+Rückgabe             
+()                                        
+Plastic bag     19%                  -1,50
+  Laden:  Nr.   Datum:     Zeit: Kasse:   
+  001     158   07.03.23   00:00 01       
+------------------------------------------
+Gesamt        13,40 €
+                                          
+MwSt.%      MwSt.    Netto     Gesamt     
+19,00       2,14     11,26     13,40      
+Gesamt      2,14     11,26     13,40      
+
+Eingegan..Euro Cash                  13,40
+
+Letzter tag für rücknahme: 06.04.23       
+
+TSE - Signatur                            
+OUyzXuEw3dSkR1BwUV85NknbAV5FEm4ReHxbDv9bU 
+BSAgMtrmwhd7tPAYGph8n/JY13qFROMUb3PdejI8u 
+za8g==                                    
+TSE - Transactionsnr                    36
+TSE - Start       2023-03-07T11:10:49.000Z
+TSE - Finish      2023-03-07T11:11:21.000Z
+TSE - Seriennummer          001T01-96QXKL3
+TSE - Signaturecount                    88
+TSE - Zeitformat                  unixTime
+TSE - Algorithmus       ecdsa-plain-SHA256
+TSE - PublicKey                           
+BMnxdN92sKH8DILW9M+gTvfIsM0GVXgRa0kTBzsNM 
+Kmb0kMYHGSVekI8zzWnhFBzfm/cUR/crDOg/75EzU 
+HcvY4=                                    
+                Come Again                
+           Mon - Fri 8:00-22:00           
+             Sat 10:00-21:00              
+             Sun 11:00-22:00              
+                                          barcode44001010004620307233
+44001010004620307233
+--0<-- CUT PAPER --0<--

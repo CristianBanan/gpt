@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rows PUBLIC "" "http://www.extenda.com/dtd/receiptlayout.dtd">
+<rows>
+
+  <!--********************************************************-->
+  <!--************ Block layouts *****************************-->
+  <!--********************************************************-->
+  
+  <block-layout id="RTSignature" type="RETAIL" main-index="3" main-first="false" modifier="replace">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+  
+  <block-layout id="Refund" type="RETAIL" modifier="replace">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="StoreCopy" state="POST"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+  
+   <block-layout id="RefundDuplicate" type="RETAIL" modifier="replace">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="Duplicate" state="PRE"/>
+    <decorator id="StoreCopy" state="POST"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+</rows>

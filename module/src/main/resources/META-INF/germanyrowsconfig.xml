@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rows PUBLIC "" "http://www.extenda.com/dtd/receiptlayout.dtd">
+<rows>
+	<row id="SaleUnitItem" input="true" modifier="extend">
+		<main type="se.extenda.pos.common.transaction.element.SaleReturnLineUnitItem">
+			<member id="vatPercent" type="number" name="vatPercent"/>
+			<member id="hasVat" type="text" name="hasVat"/>
+		</main>
+	</row>
+	<row id="SaleWeightItem" input="true" modifier="extend">
+		<main type="se.extenda.pos.common.transaction.element.SaleReturnLineWeightItem">
+			<member id="vatPercent" type="number" name="vatPercent"/>
+			<member id="hasVat" type="text" name="hasVat"/>
+		</main>
+	</row>
+</rows>

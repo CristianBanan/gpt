@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rows PUBLIC "" "http://www.extenda.com/dtd/receiptlayout.dtd">
+<rows>
+  <include location="file:./subsystems/posfacadecore/config/client/config/layout/apiblocklayoutconfig.xml"/>
+
+  <!--******************************************************** -->
+  <!--************ Block layouts ***************************** -->
+  <!--******************************************************** -->
+
+  <block-layout id="PrescanLayout" type="RETAIL" main-index="1" main-first="false">
+    <block-ref ref="SaleItemsBlock"/>
+  </block-layout>
+
+  <block-layout id="ActiveReceiptLayout" type="RETAIL" main-index="1" main-first="false">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="RetrospectiveLoyaltyBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <block-ref ref="EpsDigitalReceiptBlock"/>
+    <block-ref ref="FiscalInformationBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="CustomerDisplayLayout" type="RETAIL" main-index="1" main-first="false">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="RetrospectiveLoyaltyBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+  </block-layout>
+
+  <block-layout id="SubsetTransactionReceiptLayout" type="RETAIL" main-index="1" main-first="false">
+    <block-ref ref="SaleItemsBlock"/>
+  </block-layout>
+
+  <block-layout id="RefundPreviousEditReceiptLayout" type="RETAIL" main-index="1" main-first="false">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RT" type="RETAIL">
+    <block-ref ref="TaxRefundBlock"/>
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="RetrospectiveLoyaltyBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EndOfOrderBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <block-ref ref="EpsDigitalReceiptBlock"/>
+    <block-ref ref="FiscalInformationBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RTSignature" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="FiscalInformationBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RTSignatureDuplicate" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="Duplicate" state="PRE"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RTSignatureCopy" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RTSignatureCopyDuplicate" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="Duplicate" state="PRE"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+
+  <block-layout id="RTDuplicateReceiptLayout" type="RETAIL" main-index="3" main-first="false">
+    <block-ref ref="TaxRefundBlock"/>
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="Duplicate" state="PRE"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="RetrospectiveLoyaltyBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <block-ref ref="EpsDigitalReceiptBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RT_SUSPEND" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="ResumeOrderInfoBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <block-ref ref="EpsDigitalReceiptBlock"/>
+    <block-ref ref="FiscalInformationBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RT_SUSPEND_Duplicate" type="RETAIL" main-index="3" main-first="false">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="Duplicate" state="PRE"/>
+    <block-ref ref="ResumeOrderInfoBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <block-ref ref="EpsDigitalReceiptBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RT_CANCEL" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <block-ref ref="EpsDigitalReceiptBlock"/>
+    <block-ref ref="FiscalInformationBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RT_CANCEL_Duplicate" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="Duplicate" state="PRE"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <block-ref ref="EpsDigitalReceiptBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="Refund" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="StoreCopy" state="PRE"/>
+    <block-ref ref="FiscalPostHeaderBlock"/>
+    <block-ref ref="RefundItemsBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RefundDuplicate" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="Duplicate" state="PRE"/>
+    <decorator id="StoreCopy" state="PRE"/>
+    <block-ref ref="RefundItemsBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <!--
+    <block-layout id="CancelOrderReceiptLayout" type="RETAIL" main-index="2" main-first="false">
+    <decorator id="CancelOrder" state="PRE"/>
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="FooterBlock"/>
+    <decorator id="CancelOrder" state="PRE"/>
+    </block-layout>
+  -->
+
+  <block-layout id="CT" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <!-- Cashier messages are text messages handled by the block below
+      <block-ref ref="CashierMessageBlock"/> -->
+    <block-ref ref="TextMessageBlock"/>
+    <block-ref ref="PrintedCouponBlock"/>
+    <block-ref ref="AuditTillTransactionBlock"/>
+    <block-ref ref="EpsTransactionBlock"/>
+    <block-ref ref="CashChangerCashLevelReportBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+  <block-layout id="CT_EPS_DepositWithdrawal" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <block-ref ref="TextMessageBlock"/>
+    <block-ref ref="PrintedCouponBlock"/>
+    <block-ref ref="AuditTillTransactionBlock"/>
+    <block-ref ref="EpsTransactionBlock"/>
+    <block-ref ref="CashChangerCashLevelReportBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+  <block-layout id="CT_CUSTOMER_VIEW" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <!-- Cashier messages are text messages handled by the block below
+      <block-ref ref="CashierMessageBlock"/> -->
+    <block-ref ref="TextMessageBlock"/>
+    <block-ref ref="PrintedCouponBlock"/>
+    <block-ref ref="AuditTillTransactionBlock"/>
+    <block-ref ref="EpsTransactionBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+
+  <block-layout id="CTDuplicateReceiptLayout" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <decorator id="Duplicate" state="PRE"/>
+    <!-- Cashier messages are text messages handled by the block below
+      <block-ref ref="CashierMessageBlock"/>
+    -->
+    <block-ref ref="AuditTillTransactionBlock"/>
+    <block-ref ref="EpsTransactionBlock"/>
+    <block-ref ref="CashChangerCashLevelReportBlock"/>
+    <block-ref ref="TextMessageBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+
+
+  <block-layout id="TrainingModeStartLayout" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+  <block-layout id="TrainingModeEndLayout" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+  <block-layout id="RTPostVoidCopy" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="CustomerOrderPickupBlock"/>
+    <block-ref ref="SelfScanBlock"/>
+    <block-ref ref="SaleItemsBlock"/>
+    <block-ref ref="GlobalDiscountBlock"/>
+    <block-ref ref="SubTotalBlock"/>
+    <block-ref ref="TaxBlock"/>
+    <block-ref ref="CouponBlock"/>
+    <block-ref ref="CustomerOrderTransactionBlock"/>
+    <block-ref ref="LoyaltyBlock"/>
+    <block-ref ref="TendersBlock"/>
+    <block-ref ref="AgeRestrictionBlock"/>
+    <block-ref ref="EmployeeBlock"/>
+    <block-ref ref="ExtendedReceiptBlock"/>
+    <block-ref ref="FiscalPrinterBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <decorator id="SignatureHeader" state="PRE"/>
+    <decorator id="Signature" state="PRE"/>
+    <block-ref ref="RescanGroupBlock"/>
+    <block-ref ref="EpsDigitalReceiptBlock"/>
+    <block-ref ref="FiscalInformationBlock"/>
+    <block-ref ref="FooterBlock"/>
+  </block-layout>
+
+  <block-layout id="CertificateOfGuarantee" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <block-ref ref="WarrantyBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+  <block-layout id="CertificateOfGuaranteeCopy" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <decorator id="Duplicate" state="POST"/>
+    <block-ref ref="WarrantyBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+  <block-layout id="TaxRefund" type="CONTROL">
+    <block-ref ref="LayoutTextBlock"/>
+  </block-layout>
+
+  <block-layout id="ReceiptLinesPrinter" type="CONTROL">
+    <block-ref ref="LayoutTextBlock"/>
+  </block-layout>
+
+  <block-layout id="ReceiptLinesPrinterWithHeader" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <block-ref ref="LayoutTextBlock"/>
+  </block-layout>
+
+  <block-layout id="ReceiptLinesPrinterWithFooter" type="CONTROL">
+    <block-ref ref="LayoutTextBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+  <block-layout id="ReceiptLinesPrinterWithHeaderAndFooter" type="CONTROL">
+    <block-ref ref="CTHeaderBlock"/>
+    <block-ref ref="LayoutTextBlock"/>
+    <block-ref ref="CTFooterBlock"/>
+  </block-layout>
+
+  <block-layout id="GiftReceipt" type="RETAIL">
+    <block-ref ref="HeaderBlock"/>
+    <decorator id="GiftReceipt" state="PRE"/>
+    <block-ref ref="TransactionLinkInformationBlock"/>
+    <block-ref ref="GiftReceiptSaleItemsBlock"/>
+    <block-ref ref="ReceiptCommentTransactionBlock"/>
+    <block-ref ref="RefundPeriodTransactionBlock"/>
+    <block-ref ref="FiscalInformationBlock"/>
+    <block-ref ref="FooterBlock"/>
+    <block-ref ref="GiftReceiptInfoBlock"/>
+  </block-layout>
+
+  <block-layout id="FiscalCouponImageBlockLayout" type="RETAIL" />
+
+</rows>

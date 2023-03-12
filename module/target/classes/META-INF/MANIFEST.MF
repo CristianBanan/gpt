@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Built-By: cursache
+Build-Jdk: 18.0.1
+Specification-Title: germany
+Specification-Version: 1.0.4-SNAPSHOT
+Specification-Vendor: Extenda Retail AB
+Implementation-Title: germany
+Implementation-Version: 1.0.4-SNAPSHOT
+Implementation-Vendor-Id: se.extenda.pos.countrymodule.germany
+Implementation-Vendor: Extenda Retail AB
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,9 @@
+To get started, please check out the jira.txt file located in the same folder, it explains about the problem we're trying to solve.
+stdblocklayoutconfig.xml - this file is standard POS layout configuration, you can compare it with germanyblocklayoutconfig.xml located somewhere in the "module", which roles is customization of layouts from standard file by modifier "replace" in order to have new layouts.
+receipts.txt is a file with two receipts, one of whom reproduces the bug like in Jira ticket, by inspecting it you could see where the problem is appearing.
+As you work on the problem, try keep track of resources, in special Jira Requirement to know what needs to be done.
+So, important step is to find at least one solution for the problem described in Jira, to achieve progress suggest to try based on information you have to go through the files. Here in general are the Java classes and resources related to the information you have. If you need any additional information or context, please let me know and I will clarify you.
+Once you have a solution, please summarize the problem from ticket and provide a step-by-step guide on how to solve it in a root location of the problem, the file name should be suggestive, but if creating a file and writing in it is not possible for you, in this case send result in the chat. Also make sure your instructions are clear and easy to follow.
+Thanks again for your help. Let us know if you have any questions.
+
+

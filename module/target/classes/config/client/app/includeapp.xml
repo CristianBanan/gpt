@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC "" "http://www.extenda.com/dtd/application.dtd">
+
+<application version="1.0.4-SNAPSHOT">
+	<modules />
+	<includes>
+		<include location="module:germany:config/client/app/germany_application.xml" />
+	</includes>
+	<boot />
+</application> 

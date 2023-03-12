@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE config PUBLIC "" "http://www.extenda.com/dtd/config.dtd">
+
+<config version="${project.version}">
+  <group name="Business">
+    <group name="Receipt">
+      <value name="rows" type="Rows" modifier="replace">
+        <![CDATA[
+          <rows>
+            <include location="file:./subsystems/stdconfig/config/client/config/layout/stdheader.xml"/>
+            <include location="file:./subsystems/stdconfig/config/client/config/layout/stdrowsconfig.xml"/>
+            <include location="file:./subsystems/stdconfig/config/client/config/layout/stdblocklayoutconfig.xml"/>
+            <include location="file:./subsystems/stdconfig/config/client/config/layout/stdlayoutconfig.xml"/>
+
+            <include location="module:germany:config/client/config/layout/germanyblocklayoutconfig.xml"/> 
+            <include location="module:germany:config/client/config/layout/germanyrowsconfig.xml"/>
+            <include location="module:germany:config/client/config/layout/germanylayoutconfig.xml"/>
+
+            <!-- we need this to be able to start POS -->
+            <include location="file:./subsystems/stdconfig/config/client/config/layout/requisitionblocklayoutconfig.xml"/>
+            <include location="file:./subsystems/stdconfig/config/client/config/layout/pagecentricrowsconfig.xml"/>
+            <include location="file:./subsystems/stdconfig/config/client/config/layout/minimallayoutconfig_printed.xml"/>
+          </rows>
+          ]]>
+      </value>
+    </group>
+  </group>
+</config>

@@ -1,0 +1,57 @@
+<group name="UserInterface">
+	<group name="KeyboardEmulator">
+		<group name="AlphabeticKeyboard">
+			<value name="Keyboard" type="Keyboard" modifier="replace">
+				<![CDATA[
+        <Keyboard>
+          <Row>
+            <Key label="Q" keystroke="VK_Q" type="default" icon="" action=""/>
+            <Key label="W" keystroke="VK_W" type="default" icon="" action=""/>
+            <Key label="E" keystroke="VK_E" type="default" icon="" action=""/>
+            <Key label="R" keystroke="VK_R" type="default" icon="" action=""/>
+            <Key label="T" keystroke="VK_T" type="default" icon="" action=""/>
+            <Key label="Z" keystroke="VK_Z" type="default" icon="" action=""/>
+            <Key label="U" keystroke="VK_U" type="default" icon="" action=""/>
+            <Key label="I" keystroke="VK_I" type="default" icon="" action=""/>
+            <Key label="O" keystroke="VK_O" type="default" icon="" action=""/>
+            <Key label="P" keystroke="VK_P" type="default" icon="" action=""/>
+            <Key label="&#220;" keystroke="0xDC" type="default" icon="" action=""/>
+            <Key label="&#223;" keystroke="0xDF" type="default" icon="" action=""/>
+          </Row>
+          <Row left="-0" right="0">
+            <Key label="A" keystroke="VK_A" type="default" icon="" action=""/>
+            <Key label="S" keystroke="VK_S" type="default" icon="" action=""/>
+            <Key label="D" keystroke="VK_D" type="default" icon="" action=""/>
+            <Key label="F" keystroke="VK_F" type="default" icon="" action=""/>
+            <Key label="G" keystroke="VK_G" type="default" icon="" action=""/>
+            <Key label="H" keystroke="VK_H" type="default" icon="" action=""/>
+            <Key label="J" keystroke="VK_J" type="default" icon="" action=""/>
+            <Key label="K" keystroke="VK_K" type="default" icon="" action=""/>
+            <Key label="L" keystroke="VK_L" type="default" icon="" action=""/>
+            <Key label="&#196;" keystroke="0xC4" type="default" icon="" action=""/>
+            <Key label="&#214;" keystroke="0xD6" type="default" icon="" action=""/>
+          </Row>
+          <Row left="0" right="0">
+            <Key label="Y" keystroke="VK_Y" type="default" icon="" action=""/>
+            <Key label="X" keystroke="VK_X" type="default" icon="" action=""/>
+            <Key label="C" keystroke="VK_C" type="default" icon="" action=""/>
+            <Key label="V" keystroke="VK_V" type="default" icon="" action=""/>
+            <Key label="B" keystroke="VK_B" type="default" icon="" action=""/>
+            <Key label="N" keystroke="VK_N" type="default" icon="" action=""/>
+            <Key label="M" keystroke="VK_M" type="default" icon="" action=""/>
+            <Key label="," keystroke="VK_COMMA" type="default" icon="" action=""/>
+            <Key label="." keystroke="VK_PERIOD" type="default" icon="" action=""/>
+            <Key label="" keystroke="VK_ENTER" type="modifier" icon="skin:images/key_enter.png" action=""/>
+          </Row>
+          <Row left="0" right="0">
+            <Key label="" keystroke="VK_SPACE" type="spacebar" icon="" action=""/>
+            <Key label="" keystroke="VK_BACK_SPACE" type="modifier" icon="skin:images/key_left.png" action=""/>
+            <Key label="" keystroke="VK_UP" type="modifier" icon="skin:images/key_up.png" action=""/>
+            <Key label="" keystroke="VK_DOWN" type="modifier" icon="skin:images/key_down.png" action=""/>
+          </Row>
+        </Keyboard>
+        ]]>
+			</value>
+		</group>
+	</group>
+</group>

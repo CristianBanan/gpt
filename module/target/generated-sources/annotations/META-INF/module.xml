@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "" "http://www.extenda.com/dtd/module.dtd">
+<module name="germany" version="1.0.4-SNAPSHOT">
+ <description>SDK module to comply with Germany legislation and best practices</description>
+
+ <exports/>
+
+ <component name="GermanCountryInfo" code="se.extenda.pos.countrymodule.germany.GermanCountryInfo">
+  <description>Germany country module info</description>
+ </component>
+
+ <component name="FiscalActiveTransactionListener" code="se.extenda.pos.countrymodule.germany.transaction.FiscalActiveTransactionListener">
+  <description>This class add it self as a listener on TransactionManager to be able to capture all transactions that has an active retail transaction id. For Germany we have to set a Fiskaly active transaction id on the opening transaction request in order to use it as a supplier when we finish the transaction. We need to remove active transaction id when transaction isn&apos;t active anymore.</description>
+  <instance-ref name="TransactionManager" type="se.extenda.pos.base.client.transaction.TransactionManager"/>
+ </component>
+
+</module>

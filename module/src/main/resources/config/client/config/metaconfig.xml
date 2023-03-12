@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE meta-config PUBLIC "" "http://www.extenda.com/dtd/metaconfig.dtd">
+
+<meta-config version="${project.version}">
+
+	<!-- Germany country configuration -->
+	<config location="module:germany:config/client/config/germany_config.xml"/>
+
+	<!-- Default Touch keyboard configuration -->
+	<if property="client.touch" value="true">
+	  <config location="module:germany:config/client/config/touch/touchkeyboard_de.xml"/>
+	</if>
+
+	<unless property="client.posservices2" value="true">
+		<config location="file:./subsystems/poscountry/config/eu/client/config/scalecertification_eu.xml"/>
+	</unless>
+	<!-- Example layout configuration to print VAT on each SaleReturnLineItem -->
+	<config location="module:germany:config/client/config/layout/germanyreceiptlayoutconfig.xml"/>
+
+</meta-config>

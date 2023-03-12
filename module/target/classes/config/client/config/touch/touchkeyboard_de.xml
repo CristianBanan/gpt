@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE config PUBLIC "" "http://www.extenda.com/dtd/config.dtd"[
+		<!ENTITY Touchkeyboard SYSTEM "module:germany:config/client/config/touch/de.xml">
+		]>
+
+<config version="1.0.4-SNAPSHOT">
+
+	&Touchkeyboard;
+
+</config>
